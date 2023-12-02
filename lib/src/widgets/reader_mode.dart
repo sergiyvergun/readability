@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_widget_from_html_core/flutter_widget_from_html_core.dart';
 import 'package:xayn_readability/src/controllers/reader_mode_controller.dart';
 import 'package:xayn_readability/src/widgets/http_loader.dart';
 import 'package:xayn_readability/src/widgets/objects/process_html_result.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 /// The signature of [ReaderMode.loadingBuilder] functions.
 typedef LoadingBuilder = Widget Function();

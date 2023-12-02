@@ -11,9 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  collection: ^1.16.0
-  flutter_widget_from_html_core: ^0.9.1
-  html: ^0.15.0
+  collection: ^1.17.2
+  flutter_widget_from_html: ^0.14.9
+  html: ^0.15.4
   dio: ^5.4.0
 
 dev_dependencies:
