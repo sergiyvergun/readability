@@ -1,5 +1,5 @@
-import 'package:http_client/console.dart' as http;
+import 'package:dio/dio.dart';
 
 /// Returns an implementation of [http.Client] which is Platform-specific
-http.Client createPlatformSpecific({String? userAgent}) =>
-    http.ConsoleClient(userAgent: userAgent);
+Dio createPlatformSpecific({String? userAgent}) =>
+    Dio(BaseOptions(headers: <String, dynamic>{'User-Agent': userAgent}));

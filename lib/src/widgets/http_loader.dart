@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:http_client/http_client.dart';
 import 'package:xayn_readability/xayn_readability.dart';
 
 /// The signature of [HttpLoader.builder] functions.
@@ -94,7 +94,7 @@ class HttpLoader extends StatefulWidget {
 }
 
 class _HttpLoaderState extends State<HttpLoader> {
-  late final Client client;
+  late final Dio client;
   late Widget child;
   final Map<Uri, _BuiltChildFromHtml> builtChildren =
       <Uri, _BuiltChildFromHtml>{};
@@ -223,19 +223,13 @@ class _HttpLoaderState extends State<HttpLoader> {
     }
 
     final url = widget.uri.toString();
-    final response = await client.send(Request(widget.method, url));
+    final Response<dynamic> response = await client.get<dynamic>( url);
 
-    if (response.body is String) {
-      return response.body as String;
+    if (response.data is String) {
+      return response.data as String;
     }
 
-    writeToBuffer(StringBuffer buffer, String part) => buffer..write(part);
-
-    final buffer = await response.bodyAsStream!
-        .transform(decoder)
-        .fold(StringBuffer(), writeToBuffer);
-
-    return buffer.toString();
+    throw Exception('Unable to load $url');
   }
 }
 

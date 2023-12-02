@@ -1,4 +1,5 @@
-import 'package:http_client/browser.dart' as http;
+
+import 'package:dio/dio.dart';
 
 /// Returns an implementation of [http.Client] which is Platform-specific
-http.Client createPlatformSpecific({String? userAgent}) => http.BrowserClient();
+Dio createPlatformSpecific({String? userAgent}) => Dio();

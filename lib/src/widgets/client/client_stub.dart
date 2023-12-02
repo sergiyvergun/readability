@@ -1,5 +1,6 @@
-import 'package:http_client/http_client.dart' as http;
+
+import 'package:dio/dio.dart';
 
 /// Returns an implementation of [http.Client] which is Platform-specific
-http.Client createPlatformSpecific({String? userAgent}) =>
+Dio createPlatformSpecific({String? userAgent}) =>
     throw UnsupportedError('Cannot create client');
