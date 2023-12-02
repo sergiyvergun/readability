@@ -94,6 +94,8 @@ class ReaderMode extends StatefulWidget {
   /// Optionally pass in a ScrollController
   final ScrollController? scrollController;
 
+  final ScrollPhysics? scrollPhysics;
+
   /// Constructs a new [ReaderMode] [Widget]
   const ReaderMode({
     Key? key,
@@ -115,6 +117,7 @@ class ReaderMode extends StatefulWidget {
     this.customWidgetBuilder,
     this.rendererPadding,
     this.scrollController,
+    this.scrollPhysics,
   }) : super(key: key);
 
   @override
@@ -263,6 +266,7 @@ class _ReaderModeState extends State<ReaderMode> {
       buildAsync: false,
       factoryBuilder: widget.factoryBuilder,
       renderMode: ListViewMode(
+        physics: widget.scrollPhysics,
         controller: _scrollController,
         padding: widget.rendererPadding,
       ),
